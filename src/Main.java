@@ -21,6 +21,13 @@ public class Main {
                 case 2:
                     break;
                 case 3:
+                    int gradoMatriz = 0;
+                    System.out.println("Ingrese el grado de la matriz");
+                    gradoMatriz = Integer.parseInt(bufer.readLine());
+                    Problema3 problema3 = new Problema3();
+
+                    problema3.generarVector(3);
+
                     break;
                 case 4:
                     break;
