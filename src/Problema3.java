@@ -17,8 +17,11 @@ public class Problema3 {
         return enteros;
     }
 
+
+
+
     void generarVector(int grado){
-        int actual = 2;
+        int actual = grado - 1;
         for(int i = 0; i < grado; i++){
             System.out.println("Numero: "+ enteros[actual][i]);
             vector[i] = enteros[actual][i];
@@ -32,11 +35,11 @@ public class Problema3 {
         Arrays.sort(vector);
         int arregloNuevo[] = {0,0,0};
         int index = vector.length - 1;
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < vector.length; i++){
             arregloNuevo[i] = vector[index];
             index--;
         }
-        for(int j = 0; j < 3; j++){
+        for(int j = 0; j < vector.length; j++){
             System.out.println("Ordenado: "+ arregloNuevo[j]);
         }
 
