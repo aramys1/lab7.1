@@ -27,6 +27,7 @@ public class Main {
                     Problema3 problema3 = new Problema3();
 
                     problema3.generarVector(3);
+                    problema3.ordenarVector();
 
                     break;
                 case 4:
