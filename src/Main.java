@@ -21,15 +21,29 @@ public class Main {
                 case 2:
                     break;
                 case 3:
-                    int gradoMatriz = 0;
-                    System.out.println("Ingrese el grado de la matriz");
-                    gradoMatriz = Integer.parseInt(bufer.readLine());
-                    Problema3 problema3 = new Problema3();
+                    while(true){
+                        int gradoMatriz = 0;
 
-                    problema3.generarVector(3);
-                    problema3.ordenarVector();
+                        try{
+                            System.out.println("Ingrese el grado de la matriz");
+                            gradoMatriz = Integer.parseInt(bufer.readLine());
+                        }
+                        catch (NumberFormatException e){
+                            System.out.println("Error en el formato de entrada, digita numeros");
+                            continue;
 
-                    break;
+                        }
+                        catch (IOException e){
+                            System.out.println("Error");
+                            continue;
+                        }
+                        Problema3 problema3 = new Problema3(gradoMatriz);
+
+                        problema3.rellenarArreglo();
+                        problema3.generarVector();
+                        problema3.ordenarVector();
+                        break;
+                    }
                 case 4:
                     break;
                 default:
