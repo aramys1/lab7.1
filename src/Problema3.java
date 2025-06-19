@@ -1,21 +1,28 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Problema3 {
 
 
-    public Problema3(){}
+    int enteros[][];
+    BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));
 
-    int[][] enteros = {
-        {1,2,4},
-        {3,5,5},
-        {1,7,8},
-    };
+
+
     int[] vector = {0,0,0};
 
 
-    public int[][] getEnteros() {
-        return enteros;
+    void rellenarArreglo(int grado){
+        enteros = new int[grado][grado];
+        for(int i = 0; i < grado; i++){
+            for(int j = 0; j < grado; j++){
+
+            }
+        }
+
     }
+
 
 
 
