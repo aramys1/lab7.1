@@ -9,7 +9,7 @@ public class Problema3 {
     int grado = 0;
     int enteros[][];
     int [] vector;
-    int[] arregloNuevo;
+    int[] vectorNuevo;
     BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));
 
     //constructor
@@ -17,10 +17,11 @@ public class Problema3 {
         this.grado = grado;
         this.enteros = new int[grado][grado];
         this.vector = new int[grado];
-        this.arregloNuevo = new int[grado];
+        this.vectorNuevo = new int[grado];
     }
 
 
+    //metodo que lee y rellena la matriz
     void rellenarArreglo(){
         while(true){
             int numero = 0;
@@ -34,7 +35,7 @@ public class Problema3 {
                 }
             }
             catch (NumberFormatException e){
-                System.out.println("Error en el formato de entrada, digita numeros");
+                System.out.println("Error en el formato de entrada, digita numeros\n");
                 continue;
 
             }
@@ -47,6 +48,7 @@ public class Problema3 {
         }
     }
 
+    //metodo que identifica la diagonal secundaria y crea un vector
     void generarVector(){
         int actual = grado - 1;
         for(int i = 0; i < grado; i++){
@@ -62,17 +64,18 @@ public class Problema3 {
 
     }
 
+    //metodo que ordena el vector de mayor a menor
     void ordenarVector(){
         Arrays.sort(vector);
         int index = grado - 1;
         for(int i = 0; i < grado; i++){
-            arregloNuevo[i] = vector[index];
+            vectorNuevo[i] = vector[index];
             index--;
         }
         System.out.println("\nVector con la diagonal secundaria ordenada de mayor a menor");
         System.out.printf("< ");
         for(int j = 0; j < grado; j++){
-            System.out.printf("%d, ", arregloNuevo[j]);
+            System.out.printf("%d, ", vectorNuevo[j]);
         }
         System.out.printf(">\n");
     }
