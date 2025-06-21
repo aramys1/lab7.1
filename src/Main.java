@@ -50,6 +50,66 @@ public class Main {
                         }
                         break;
                     case 4:
+                        //problema 4
+                        int cantidadEstudiantes = 0;
+
+                        try {
+                            System.out.println("Ingrese la cantidad de estudiantes: ");
+                            cantidadEstudiantes = Integer.parseInt(bufer.readLine());
+                        } catch(IOException e){
+                            System.out.println("\nError al leer la entrada.");
+                            return; // o System.exit(1);
+                        } catch(NumberFormatException e){
+                            System.out.println("\nError en el formato de entrada.");
+                            return;
+                        }
+
+                        int[] notas = new int[cantidadEstudiantes];
+                        String[] nombres = new String[cantidadEstudiantes];
+
+                        int i = 0;
+                        while(i < cantidadEstudiantes){
+                            try {
+                                System.out.println("Ingrese el nombre del estudiante " + (i + 1) + ": ");
+                                nombres[i] = bufer.readLine();
+
+                                System.out.println("Ingrese la nota de " + nombres[i] + ": ");
+                                notas[i] = Integer.parseInt(bufer.readLine());
+
+                                i++; 
+
+                            } catch(IOException e){
+                                System.out.println("\nError al leer la entrada.");
+                            } catch(NumberFormatException e){
+                                System.out.println("\nError en el formato de entrada.");
+                            }
+                        }
+                        int opcion = 0;
+                        try {
+                            System.out.println("\n¿Ordenar por nombre (1) o por nota (2)?");
+                            opcion = Integer.parseInt(bufer.readLine());
+                        } catch(IOException e){
+                                System.out.println("\nError al leer la entrada.");
+                        } catch(NumberFormatException e){
+                                System.out.println("\nError en el formato de entrada.");
+                        }
+
+                        Problema4 problema4 = new Problema4();
+
+                        if (opcion == 1) {
+                            problema4.ordenarPorNombre(nombres, notas);
+                        } else if (opcion == 2) {
+                            problema4.ordenarPorNota(nombres, notas);
+                        } else {
+                            System.out.println("Opción no válida.");
+                            return;
+                        }
+
+                        System.out.println("\nEstudiantes ordenados:");
+                        for (i = 0; i < cantidadEstudiantes; i++) {
+                            System.out.println(nombres[i] + " - " + notas[i]);
+                        }
+
                         break;
 
                     case 5:
