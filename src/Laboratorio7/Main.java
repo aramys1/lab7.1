@@ -1,3 +1,4 @@
+package Laboratorio7;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,10 +13,10 @@ public class Main {
         int accesoCase = 0;
         int accesoSalida = 0;
 
-        System.out.println("\nMenu principal\nElige el problema de matrices y arreglos que quieres realizar\n");
+        System.out.println("\nMenu principal\nElige el problema de matrices y arreglos que quieres realizar");
         while(true){
             try{
-                System.out.println("1. Problema1\n2. Problema2\n3. Generar un vector de la diagonal secundaria ordenado de mayor a menor\n4. Problema4\n5. Salir");
+                System.out.println("\n1. Problema1\n2. Problema2\n3. Generar un vector de la diagonal secundaria ordenado de mayor a menor\n4. Problema4\n5. Salir");
                 accesoCase = Integer.parseInt(bufer.readLine());
 
                 switch (accesoCase){
@@ -75,6 +76,10 @@ public class Main {
 
                                 System.out.println("Ingrese la nota de " + nombres[i] + ": ");
                                 notas[i] = Integer.parseInt(bufer.readLine());
+                                if (notas[i] < 0 || notas[i] > 100) {
+                                    System.out.println("La nota debe estar entre 0 y 100");
+                                    continue; 
+                                }
 
                                 i++; 
 
@@ -86,7 +91,7 @@ public class Main {
                         }
                         int opcion = 0;
                         try {
-                            System.out.println("\n¿Ordenar por nombre (1) o por nota (2)?");
+                            System.out.println("\nIngrese 1  para ordenar por nombre o 2 para ordenar por nota");
                             opcion = Integer.parseInt(bufer.readLine());
                         } catch(IOException e){
                                 System.out.println("\nError al leer la entrada.");
@@ -105,7 +110,7 @@ public class Main {
                             return;
                         }
 
-                        System.out.println("\nEstudiantes ordenados:");
+                        System.out.println("\nEstudiantes ordenados:\n");
                         for (i = 0; i < cantidadEstudiantes; i++) {
                             System.out.println(nombres[i] + " - " + notas[i]);
                         }

@@ -1,3 +1,4 @@
+package Laboratorio7;
 public class Problema4 {
 
     public void ordenarPorNombre(String[] nombres, int[] notas) {
