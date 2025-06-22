@@ -34,6 +34,10 @@ public class Main {
                             try{
                                 System.out.println("Ingrese el grado de la matriz");
                                 gradoMatriz = Integer.parseInt(bufer.readLine());
+                                if(gradoMatriz <= 0){
+                                    System.out.println("El grado de la matriz no puede ser negativo o 0");
+                                    continue;
+                                }
                             }
                             catch (NumberFormatException e){
                                 System.out.println("Error en el formato de entrada, digita numeros\n");
