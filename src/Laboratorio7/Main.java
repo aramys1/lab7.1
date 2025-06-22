@@ -16,15 +16,54 @@ public class Main {
         System.out.println("\nMenu principal\nElige el problema de matrices y arreglos que quieres realizar");
         while(true){
             try{
-                System.out.println("\n1. Problema1\n2. Problema2\n3. Generar un vector de la diagonal secundaria ordenado de mayor a menor\n4. Ordenar estudiantes por nombre o nota\n5. Salir");
+                System.out.println("\n1. Ingresar una matriz y mostrar su traspuesta.\n2. Encontrar el mayor de cada fila en una matriz\n3. Generar un vector de la diagonal secundaria ordenado de mayor a menor\n4. Ordenar estudiantes por nombre o nota\n5. Salir");
                 accesoCase = Integer.parseInt(bufer.readLine());
 
                 switch (accesoCase){
                     case 1:
                         //Problema 1 Samir Horna
+
+                        int fila;
+                        int columnas;
+
+                        try{
+                            System.out.println("Ingrese la fila de la matriz");
+                            fila = Integer.parseInt(bufer.readLine());
+
+                            System.out.println("Ingrese la columna de la matriz");
+                            columnas = Integer.parseInt(bufer.readLine());
+
+                        }catch (IOException | NumberFormatException e) {
+                            System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
+                            continue;
+                        }
+
+                        Problema1 problema1 = new Problema1(fila, columnas);
+                        problema1.matriz();
+                        problema1.traspuesta();
+
                         break;
                     case 2:
                         //Problema 2 Samir Horna
+                        int filas;
+                        int columnass;
+
+                        try{
+                            System.out.println("Ingrese la fila de la matriz: ");
+                            filas = Integer.parseInt(bufer.readLine());
+
+                            System.out.println("Ingrese la columna de la matriz: ");
+                            columnass = Integer.parseInt(bufer.readLine());
+
+                        }catch (IOException | NumberFormatException e) {
+                            System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
+                            continue;
+                        }
+
+                        Problema2 problema2 = new Problema2(filas, columnass);
+                        problema2.matriz();
+                        problema2.valoresGrandes();
+
                         break;
                     case 3:
                         //Problema 3 Aramys Cedeño
