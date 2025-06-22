@@ -58,23 +58,28 @@ public class Main {
                         break;
                     case 2:
                         //Problema 2  Samir Horna
-                        int filas;
-                        int columnass;
+                        int filas = 0;
+                        int columnass = 0;
 
-                        try{
-                            System.out.println("Ingrese la fila de la matriz: ");
-                            filas = Integer.parseInt(bufer.readLine());
+                        do{
+                            try{
+                                deNuevo = 0;
+                                System.out.println("Ingrese la fila de la matriz: ");
+                                filas = Integer.parseInt(bufer.readLine());
 
-                            System.out.println("Ingrese la columna de la matriz: ");
-                            columnass = Integer.parseInt(bufer.readLine());
-                            if (filas < 1 || columnass < 1) {
-                                System.out.println("\nLa fila y la columna deben ser mayores o iguales que 1.");
-                                continue;
+                                System.out.println("Ingrese la columna de la matriz: ");
+                                columnass = Integer.parseInt(bufer.readLine());
+                                if (filas < 1 || columnass < 1) {
+                                    System.out.println("\nLa fila y la columna deben ser mayores o iguales que 1.");
+                                    deNuevo = 1;
+                                }
+                            }catch (IOException | NumberFormatException e) {
+                                System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
+                                deNuevo = 1;
                             }
-                        }catch (IOException | NumberFormatException e) {
-                            System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
-                            continue;
-                        }
+
+                        }while(deNuevo == 1);
+                        
 
                         Problema2 problema2 = new Problema2(filas, columnass);
                         problema2.matriz();

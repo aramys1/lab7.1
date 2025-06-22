@@ -65,7 +65,7 @@ public class Problema2 {
         }
         System.out.println("El valores más grandes por fila:");
         for (int i = 0; i < fila; i++) {
-            System.out.println("Fila " + i + ": " + mayores[i]);
+            System.out.println("Fila " + (i+1) + ": " + mayores[i]);
         }
     }
 }
