@@ -1,6 +1,6 @@
 package Laboratorio7;
 public class Problema4 {
-
+    //Problema 4 Diego Cedeño
     public void ordenarPorNombre(String[] nombres, int[] notas) {
         for (int i = 0; i < nombres.length - 1; i++) {
             for (int j = i + 1; j < nombres.length; j++) {

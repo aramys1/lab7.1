@@ -6,10 +6,8 @@ import java.io.InputStreamReader;
 import Laboratorio7.Excepciones.ExcepcionDeNombre;
 
 public class Main {
+    //Main Aramys Cedeño
     public static void main(String[] args) {
-        //hola mundo
-        //prueba en intellij
-
         BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));
 
         int accesoCase = 0;
@@ -18,16 +16,18 @@ public class Main {
         System.out.println("\nMenu principal\nElige el problema de matrices y arreglos que quieres realizar");
         while(true){
             try{
-                System.out.println("\n1. Problema1\n2. Problema2\n3. Generar un vector de la diagonal secundaria ordenado de mayor a menor\n4. Problema4\n5. Salir");
+                System.out.println("\n1. Problema1\n2. Problema2\n3. Generar un vector de la diagonal secundaria ordenado de mayor a menor\n4. Ordenar estudiantes por nombre o nota\n5. Salir");
                 accesoCase = Integer.parseInt(bufer.readLine());
 
                 switch (accesoCase){
                     case 1:
+                        //Problema 1 Samir Horna
                         break;
                     case 2:
+                        //Problema 2 Samir Horna
                         break;
                     case 3:
-                        //problema 3
+                        //Problema 3 Aramys Cedeño
                         while(true){
                             int gradoMatriz = 0;
 
@@ -53,18 +53,26 @@ public class Main {
                         }
                         break;
                     case 4:
-                        //problema 4
+                        //Problema 4 Diego Cedeño
                         int cantidadEstudiantes = 0;
 
                         try {
-                            System.out.println("Ingrese la cantidad de estudiantes: ");
+                            System.out.print("\nIngrese la cantidad de estudiantes: ");
                             cantidadEstudiantes = Integer.parseInt(bufer.readLine());
+                            if (cantidadEstudiantes <= 0) {
+                                System.out.println("\nLa cantidad de estudiantes debe ser mayor que 0.");
+                                continue;
+                            }
+                            else if (cantidadEstudiantes > 100) {
+                                System.out.println("\nLa cantidad de estudiantes no puede ser mayor a 100.");
+                                continue;
+                            }
                         } catch(IOException e){
                             System.out.println("\nError al leer la entrada.");
-                            return; // o System.exit(1);
+                            continue;
                         } catch(NumberFormatException e){
                             System.out.println("\nError en el formato de entrada.");
-                            return;
+                            continue;
                         }
 
                         int[] notas = new int[cantidadEstudiantes];
@@ -73,7 +81,7 @@ public class Main {
                         int i = 0;
                         while(i < cantidadEstudiantes){
                             try {
-                                System.out.println("Ingrese el nombre del estudiante " + (i + 1) + ": ");
+                                System.out.print("\nIngrese el nombre del estudiante " + (i + 1) + ": ");
                                 nombres[i] = bufer.readLine();
 
                                 String regex = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
@@ -81,10 +89,10 @@ public class Main {
                                     throw new ExcepcionDeNombre();
                                 }
                                 else{
-                                    System.out.println("Ingrese la nota de " + nombres[i] + ": ");
+                                    System.out.print("\nIngrese la nota de " + nombres[i] + ": ");
                                     notas[i] = Integer.parseInt(bufer.readLine());
                                     if (notas[i] < 0 || notas[i] > 100) {
-                                        System.out.println("La nota debe estar entre 0 y 100");
+                                        System.out.println("\nLa nota debe estar entre 0 y 100");
                                         continue; 
                                     }
 
@@ -92,7 +100,6 @@ public class Main {
                                 }
                             } catch(ExcepcionDeNombre e){
                                 System.out.println("\nNombre inválido: " + e.getMessage());
-                            
                             } catch(IOException e){
                                 System.out.println("\nError al leer la entrada.");
                             } catch(NumberFormatException e){
@@ -100,30 +107,38 @@ public class Main {
                             }
                         }
                         int opcion = 0;
-                        try {
-                            System.out.println("\nIngrese 1  para ordenar por nombre o 2 para ordenar por nota");
-                            opcion = Integer.parseInt(bufer.readLine());
-                        } catch(IOException e){
-                                System.out.println("\nError al leer la entrada.");
-                        } catch(NumberFormatException e){
-                                System.out.println("\nError en el formato de entrada.");
-                        }
-
                         Problema4 problema4 = new Problema4();
-
-                        if (opcion == 1) {
-                            problema4.ordenarPorNombre(nombres, notas);
-                        } else if (opcion == 2) {
-                            problema4.ordenarPorNota(nombres, notas);
-                        } else {
-                            System.out.println("Opción no válida.");
-                            return;
+                        int deNuevo = 1;
+                        while(deNuevo == 1){
+                            try {
+                                System.out.print("\nIngrese 1 para ordenar por nombre o 2 para ordenar por nota: ");
+                                opcion = Integer.parseInt(bufer.readLine());
+                                if (opcion == 1) {
+                                    problema4.ordenarPorNombre(nombres, notas);
+                                    System.out.println("\nEstudiantes ordenados:\n");
+                                    for (i = 0; i < cantidadEstudiantes; i++) {
+                                        System.out.println(nombres[i] + " - " + notas[i]);
+                                    }
+                                    deNuevo = 0;
+                                } else if (opcion == 2) {
+                                    problema4.ordenarPorNota(nombres, notas);
+                                    System.out.println("\nEstudiantes ordenados:\n");
+                                    for (i = 0; i < cantidadEstudiantes; i++) {
+                                        System.out.println(nombres[i] + " - " + notas[i]);
+                                    }
+                                    deNuevo = 0;
+                                } else {
+                                    System.out.println("\nOpción no válida."); 
+                                    continue;
+                                }
+                            } catch(IOException e){
+                                    System.out.println("\nError al leer la entrada.");
+                            } catch(NumberFormatException e){
+                                    System.out.println("\nError en el formato de entrada.");
+                            }
                         }
-
-                        System.out.println("\nEstudiantes ordenados:\n");
-                        for (i = 0; i < cantidadEstudiantes; i++) {
-                            System.out.println(nombres[i] + " - " + notas[i]);
-                        }
+                        
+                        
 
                         break;
 

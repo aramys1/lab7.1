@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Problema3 {
+    //Problema 3 Aramys Cedeño
 
     //atributos y arreglos
     int grado = 0;
