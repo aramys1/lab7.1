@@ -31,3 +31,4 @@ public class Problema4 {
         }
     }
 }
+//Profe yo sé que no quería lo de la comparación burbuja pero no encontré otra manera :'(

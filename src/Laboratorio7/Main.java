@@ -21,7 +21,7 @@ public class Main {
 
                 switch (accesoCase){
                     case 1:
-                        //Problema 1 Samir Horna
+                        //Problema 1  Samir Horna
 
                         int fila;
                         int columnas;
@@ -51,7 +51,7 @@ public class Main {
 
                         break;
                     case 2:
-                        //Problema 2 Samir Horna
+                        //Problema 2  Samir Horna
                         int filas;
                         int columnass;
 
