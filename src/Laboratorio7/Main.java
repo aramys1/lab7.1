@@ -23,27 +23,33 @@ public class Main {
                     case 1:
                         //Problema 1  Samir Horna
 
-                        int fila;
-                        int columnas;
+                        int fila = 0;
+                        int columnas = 0;
+                        int deNuevo = 1;
+                        while (deNuevo == 1) {
+                            try{
+                                System.out.println("Ingrese la fila de la matriz");
+                                fila = Integer.parseInt(bufer.readLine());
 
-                        try{
-                            System.out.println("Ingrese la fila de la matriz");
-                            fila = Integer.parseInt(bufer.readLine());
-
-                            System.out.println("Ingrese la columna de la matriz");
-                            columnas = Integer.parseInt(bufer.readLine());
-                            if (fila != columnas) {
-                                System.out.println("\nNo se puede calcular la traspuesta en la misma matriz porque no es cuadrada.");
-                                return;
-                            }
-                            else if (fila < 2 || columnas < 2) {
-                                System.out.println("\nLa fila y la columna deben ser mayores o iguales que 2.");
+                                System.out.println("Ingrese la columna de la matriz");
+                                columnas = Integer.parseInt(bufer.readLine());
+                                if (fila != columnas) {
+                                    System.out.println("\nNo se puede calcular la traspuesta en la misma matriz porque no es cuadrada.");
+                                    deNuevo = 1;
+                                }
+                                else if (fila < 2 || columnas < 2) {
+                                    System.out.println("\nLa fila y la columna deben ser mayores o iguales que 2.");
+                                    deNuevo = 1;
+                                }
+                                else {
+                                    deNuevo = 0;
+                                }
+                            }catch (IOException | NumberFormatException e) {
+                                System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
                                 continue;
                             }
-                        }catch (IOException | NumberFormatException e) {
-                            System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
-                            continue;
                         }
+                       
 
                         Problema1 problema1 = new Problema1(fila, columnas);
                         problema1.matriz();
@@ -108,25 +114,32 @@ public class Main {
                     case 4:
                         //Problema 4 Diego Cedeño
                         int cantidadEstudiantes = 0;
+                        do{
+                            deNuevo = 0;
+                             try {
+                                System.out.print("\nIngrese la cantidad de estudiantes: ");
+                                cantidadEstudiantes = Integer.parseInt(bufer.readLine());
+                                if (cantidadEstudiantes <= 0) {
+                                    System.out.println("\nLa cantidad de estudiantes debe ser mayor que 0.");
+                                    deNuevo = 1;
+                                }
+                                else if (cantidadEstudiantes > 100) {
+                                    System.out.println("\nLa cantidad de estudiantes no puede ser mayor a 100.");
+                                    deNuevo = 1;
+                                }
+                            } catch(IOException e){
+                                System.out.println("\nError al leer la entrada.");
+                                deNuevo = 1;
+                            
+                            } catch(NumberFormatException e){
+                                System.out.println("\nError en el formato de entrada.");
+                                deNuevo = 1;
 
-                        try {
-                            System.out.print("\nIngrese la cantidad de estudiantes: ");
-                            cantidadEstudiantes = Integer.parseInt(bufer.readLine());
-                            if (cantidadEstudiantes <= 0) {
-                                System.out.println("\nLa cantidad de estudiantes debe ser mayor que 0.");
-                                continue;
+                                
                             }
-                            else if (cantidadEstudiantes > 100) {
-                                System.out.println("\nLa cantidad de estudiantes no puede ser mayor a 100.");
-                                continue;
-                            }
-                        } catch(IOException e){
-                            System.out.println("\nError al leer la entrada.");
-                            continue;
-                        } catch(NumberFormatException e){
-                            System.out.println("\nError en el formato de entrada.");
-                            continue;
-                        }
+
+                        }while(deNuevo == 1);
+                       
 
                         int[] notas = new int[cantidadEstudiantes];
                         String[] nombres = new String[cantidadEstudiantes];
@@ -161,7 +174,7 @@ public class Main {
                         }
                         int opcion = 0;
                         Problema4 problema4 = new Problema4();
-                        int deNuevo = 1;
+                        deNuevo = 1;
                         while(deNuevo == 1){
                             try {
                                 System.out.print("\nIngrese 1 para ordenar por nombre o 2 para ordenar por nota: ");

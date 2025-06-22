@@ -20,13 +20,18 @@ public class Problema1 {
         try {
             for (int i = 0; i < fila; i++) {
                 for (int j = 0; j < columnas; j++) {
-                    try {
-                        System.out.printf("Ingrese el valor para la fila: " + i + " y columna: " + j + " ");
-                        matriz[i][j] = Integer.parseInt(bufer.readLine());
-                    } catch (IOException | NumberFormatException e) {
-                        System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
-                        return;
+                    int deNuevo = 1;
+                    while (deNuevo == 1) {
+                        deNuevo = 0;
+                        try {
+                            System.out.printf("Ingrese el valor para la fila: " + i + " y columna: " + j + " ");
+                            matriz[i][j] = Integer.parseInt(bufer.readLine());
+                        } catch (IOException | NumberFormatException e) {
+                            System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
+                            deNuevo = 1;
+                        }
                     }
+                    
                 }
             }
         } catch (Exception e) {
