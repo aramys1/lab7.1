@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import Laboratorio7.Excepciones.ExcepcionDeNombre;
+
 public class Main {
     public static void main(String[] args) {
         //hola mundo
@@ -74,15 +76,23 @@ public class Main {
                                 System.out.println("Ingrese el nombre del estudiante " + (i + 1) + ": ");
                                 nombres[i] = bufer.readLine();
 
-                                System.out.println("Ingrese la nota de " + nombres[i] + ": ");
-                                notas[i] = Integer.parseInt(bufer.readLine());
-                                if (notas[i] < 0 || notas[i] > 100) {
-                                    System.out.println("La nota debe estar entre 0 y 100");
-                                    continue; 
+                                String regex = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
+                                if (!nombres[i].matches(regex)) {
+                                    throw new ExcepcionDeNombre();
                                 }
+                                else{
+                                    System.out.println("Ingrese la nota de " + nombres[i] + ": ");
+                                    notas[i] = Integer.parseInt(bufer.readLine());
+                                    if (notas[i] < 0 || notas[i] > 100) {
+                                        System.out.println("La nota debe estar entre 0 y 100");
+                                        continue; 
+                                    }
 
-                                i++; 
-
+                                    i++; 
+                                }
+                            } catch(ExcepcionDeNombre e){
+                                System.out.println("\nNombre inválido: " + e.getMessage());
+                            
                             } catch(IOException e){
                                 System.out.println("\nError al leer la entrada.");
                             } catch(NumberFormatException e){
