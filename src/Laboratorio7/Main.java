@@ -87,7 +87,7 @@ public class Main {
                             try {
                                 System.out.print("\nIngrese el nombre del estudiante " + (i + 1) + ": ");
                                 nombres[i] = bufer.readLine();
-
+                                nombres[i] = nombres[i].trim();
                                 String regex = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
                                 if (!nombres[i].matches(regex)) {
                                     throw new ExcepcionDeNombre();
