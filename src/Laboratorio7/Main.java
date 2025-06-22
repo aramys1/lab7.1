@@ -32,7 +32,14 @@ public class Main {
 
                             System.out.println("Ingrese la columna de la matriz");
                             columnas = Integer.parseInt(bufer.readLine());
-
+                            if (fila != columnas) {
+                                System.out.println("\nNo se puede calcular la traspuesta en la misma matriz porque no es cuadrada.");
+                                return;
+                            }
+                            else if (fila < 2 || columnas < 2) {
+                                System.out.println("\nLa fila y la columna deben ser mayores o iguales que 2.");
+                                continue;
+                            }
                         }catch (IOException | NumberFormatException e) {
                             System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
                             continue;
@@ -54,7 +61,10 @@ public class Main {
 
                             System.out.println("Ingrese la columna de la matriz: ");
                             columnass = Integer.parseInt(bufer.readLine());
-
+                            if (filas < 1 || columnass < 1) {
+                                System.out.println("\nLa fila y la columna deben ser mayores o iguales que 1.");
+                                continue;
+                            }
                         }catch (IOException | NumberFormatException e) {
                             System.err.println("Error al leer el valor de la matriz: " + e.getMessage());
                             continue;
